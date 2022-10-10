@@ -16,6 +16,28 @@ body{
     background-color: #eaeded;
     box-sizing: border-box;
 }
+/* Coupon mode */
+#coupon{
+     height:200px;
+    width:400px;
+    /* background-color:gray; */
+    z-index:100;
+    margin-left:33%;
+    visibility: hidden;
+    position: absolute;
+    margin-top: -250%;    
+    box-shadow: 0 0 50px 15px #6c69cf;
+}
+.cBtn{
+    cursor: pointer;
+    position: absolute;
+    height: 25px;
+    width: 30px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 50%;
+}
+
 /* Header Section */
 
 .first{

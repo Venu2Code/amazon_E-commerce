@@ -6,11 +6,24 @@
         <title>Amazon_Clone</title>
         <link rel="stylesheet" href="styles.css">
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+        <script src="script.js"></script>
+        
+        <style>
+            body{
+            background: #eaeded;
+            color: black;
+            }
+            .myDark{                
+            background:black;
+            color: white;
+            }
+        </style>
     </head>
     <body role="region" aria-labelledby="h-section" id="h-section">
+    <div id="main">       
         <header>
-            <div class="first">
-                    <div class="flex logo">
+        <div class="first">
+                <div class="flex logo">
                     <a href="#"> <img src="https://pnggrid.com/wp-content/uploads/2021/05/Amazon-Logo-Transparent-1024x310.png" alt="logo"></a>
                     <div class="map flex">
                         <i class="fas fa-map-marker"></i>
@@ -29,6 +42,7 @@
                     <i class="fas fa-search"></i>
                 </div>
                 <div class="flex right">
+                    
                     <div class="flex lang">
                         <img src="https://static.vecteezy.com/system/resources/thumbnails/002/399/741/small/american-flag-icon-vector.jpg" alt="flag-icon">
                         <i class="fas fa-caret-down"></i>
@@ -50,7 +64,7 @@
                         <p>0</p>
                     </div>
                 </div>
-           </div>
+        </div>
     <!-- Nav Bar Section -->
         <div class="second">
             <div class="second-1">
@@ -67,10 +81,11 @@
                     <li>Gift Card</li>
                     <li>Sell</li>
                 </ul>
-            </div>
+            </div>            
             <div class="second-3">
+                <!-- <button onclick="changeMode()" style="cursor: pointer;  border-radius: 5px; border:none;width:30%; background-color: rgb(205, 247, 241);">Dark Mode</button> -->
                 <span>Prime Day Sale's</span>
-            </div>
+             </div>
         </div>
         </header>
         <!-- Image Slider & Two Rows -->
@@ -412,6 +427,21 @@
                     <span>&copy; Designed by Venugobal (Venu2Code)</span>
             </div>
         </section>
+    </div>
+    <!-- COUPON SECTION -->
+    <div id="coupon">
+        <img src="image/coupon.jpg" alt="coupon" style="height:200px; width:400px;">
+        <button onclick="closeCoupon()" class="cBtn">&times;</button>
+    </div>
+        <script>
+            window.onload=loadCoupon();
+
+            function changeMode(){
+                let mybody= document.body;
+                mybody.classList.toggle('myDark')
+            }
+        
+        </script>
     </body>
 </html>
 
