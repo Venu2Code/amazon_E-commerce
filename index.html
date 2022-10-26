@@ -29,7 +29,7 @@
                         <i class="fas fa-map-marker"></i>
                         <div>
                             <span>Deliver to</span>
-                            <span>India</span>
+                            <span id="location" >India</span>
                         </div>
                     </div>
                 </div>            
@@ -44,8 +44,11 @@
                 <div class="flex right">
                     
                     <div class="flex lang">
-                        <img src="https://static.vecteezy.com/system/resources/thumbnails/002/399/741/small/american-flag-icon-vector.jpg" alt="flag-icon">
-                        <i class="fas fa-caret-down"></i>
+                        <!-- <img src="https://static.vecteezy.com/system/resources/thumbnails/002/399/741/small/american-flag-icon-vector.jpg" alt="flag-icon">
+                        <i class="fas fa-caret-down"></i> -->
+                        <span id="weatherOut" style="width: 49px;"></span>
+                        <img src='https://openweathermap.org/img/w/10d.png' alt="weather"/>
+                       
                     </div>
                     <div class="sign">
                         <span>Hello, Sign in</span>
@@ -434,13 +437,46 @@
         <button onclick="closeCoupon()" class="cBtn">&times;</button>
     </div>
         <script>
+            // coupon function
             window.onload=loadCoupon();
-
             function changeMode(){
                 let mybody= document.body;
                 mybody.classList.toggle('myDark')
             }
         
+            // location function
+            let x = document.getElementById('location');
+            let y = document.getElementById('weatherOut');
+            window.onload=geolocation();
+            function geolocation(){
+                if(navigator.geolocation){
+                    navigator.geolocation.getCurrentPosition(showPosition)
+                }else{
+                    x.innerText = "Geo Not Supported"
+                }
+            }
+
+            function showPosition(data){
+                console.log(data)
+                let lat = data.coords.latitude;
+                let long = data.coords.longitude;
+                //  console.log(`Latitude is ${lat} and longitude is ${long}`)
+                const url = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${lat}&lon=${long}&mode=json&units=metric&cnt=5&appid=fbf712a5a83d7305c3cda4ca8fe7ef29`
+                //api calling
+                fetch(url,{method: 'GET'})             
+                .then((res) => res.json())                
+                .then((data) => {                    
+                    let cityName = data.city.name;
+                    let temp = Math.floor(data.list[0].temp.day);
+                    x.innerText =`${cityName} `
+                    y.innerText = `${temp} °C`
+                })
+                .catch((err) => {
+                    console.log(err)
+                })
+
+            }
+
         </script>
     </body>
 </html>
